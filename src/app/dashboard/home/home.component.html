@@ -1,0 +1,37 @@
+
+        <div class="middle-content">
+            <mat-card>
+                <mat-card-content>
+                  <h2>Available balance : RS {{totalBalance}}</h2>
+                  <br>
+                  <button mat-flat-button color="primary" (click)="setSpendingLimit()">Set Spending Limit</button>
+                  <div class=""  *ngIf="setLimit"> 
+                    <span class="text-small">0</span>
+                    <mat-slider min="0" max="10000" step="500"  
+                    (change)="updateSetting($event)" [value]="amountLimit" showTickMarks  
+                    discrete  color="primary" id='slider' name="slider" #slider="ngModel" [(ngModel)]="amountLimit" >
+                        <input matSliderThumb>
+                      </mat-slider><span class="text-small">10000</span>
+    
+                      <br>
+                      
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Amount</mat-label>
+                          <input matInput placeholder="0" [value]="gridsize"  name="amountLimit" [(ngModel)]="amountLimit" #slider="ngModel" >
+                        </mat-form-field>
+                        
+                        <button mat-raised-button color="primary" style="margin-left: 20px;"  [disabled]="!amountLimit" (click)="openDialog(amountLimit)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">check</mat-icon></button>
+                        <button mat-raised-button color="primary" style="margin-left:20px" (click)="reset()"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">clear</mat-icon></button>
+                      
+          
+                  </div>
+
+
+
+                </mat-card-content>
+              </mat-card>
+              
+             
+            </div>
+              
+              

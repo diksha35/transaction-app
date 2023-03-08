@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>Transfer</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             Transfer Via UPI
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+
+         <form [formGroup]="transForm1" (ngSubmit)="submitData()" >
+          <mat-form-field appearance="fill">
+            <mat-label>UPI ID</mat-label>
+            <input matInput formControlName="paymentInfo" >
+          </mat-form-field>
+          <!-- <p  *ngIf="this.transForm1.controls.paymentInfo.dirty&&this.transForm1.controls.paymentInfo.touched" style="color:red"  >UPI ID required.</p> -->
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput formControlName="amount" >
+          </mat-form-field>
+          <p *ngIf="this.transForm1.controls.amount.hasError('spendingLimit')"  style="color:red" >Debit amount cannot be greater than the spending limit.</p>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Remark</mat-label>
+            <input matInput  formControlName="remark">
+          </mat-form-field>
+          <!-- <p  *ngIf="this.transForm1.controls.remark.dirty && this.transForm1.controls.remark.touched" style="color:red"  >Remark is required.</p> -->
+          <br>
+          <button mat-raised-button mat-dialog-close type="submit" color="primary" style="margin-left: 20px;" [disabled]="!transForm1.valid"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">check</mat-icon></button>
+          <button mat-raised-button type="button"  (click)="transForm1.reset()" color="primary" style="margin-left:20px" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">clear</mat-icon></button>
+          
+        </form>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             Transfer Via Account
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="transForm2" (ngSubmit)="addData()">
+          <mat-form-field appearance="fill">
+            <mat-label>Account No.</mat-label>
+            <input matInput formControlName="paymentInfo">
+          </mat-form-field>
+          <!-- <p  *ngIf="this.transForm2.controls.paymentInfo.dirty&&this.transForm2.controls.paymentInfo.touched" style="color:red"  >Account No. is required.</p> -->
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" formControlName="amount" >
+          </mat-form-field>
+          <p  *ngIf="this.transForm2.controls.amount.hasError('spendingLimit')" style="color:red"  >Debit amount cannot be greater than the spending limit.</p>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Remark</mat-label>
+            <input matInput  formControlName="remark">
+            <!-- <p  *ngIf="this.transForm2.controls.remark.dirty&&this.transForm2.controls.remark.touched" style="color:red"  >Remark is required.</p> -->
+          </mat-form-field>
+
+          <br>
+          
+          <button mat-raised-button type="submit" color="primary" style="margin-left: 20px;" [disabled]="!transForm2.valid"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">check</mat-icon></button>
+          <button mat-raised-button type="button" color="primary" style="margin-left:20px" (click)="transForm2.reset()"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">clear</mat-icon></button>
+          
+        </form>
+        </mat-expansion-panel>
+      </mat-accordion>      
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>close</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

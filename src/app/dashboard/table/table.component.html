@@ -1,0 +1,30 @@
+
+<mat-card>
+ 
+   
+    <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: center;">#</th>
+            <th scope="col" style="text-align: center;">Status</th>
+            <th scope="col" style="text-align: center;">Credit / Debit</th>
+            <th scope="col" style="text-align: center;">UPI / Account Number</th>
+            <th scope="col" style="text-align: center;">Amount</th>
+            <th scope="col" style="text-align: center;">Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of arr; let i=index" >
+            <th scope="row" style="text-align: center;" >{{i}}</th>
+            <td style="text-align: center;">{{data.status}}</td>
+            <td style="text-align: center;color:rgb(9, 176, 6);">{{data.type}}</td>
+            <td style="text-align: center;">{{data.paymentInfo}}</td>
+            <td style="text-align: center;">{{data.amount}}</td>
+            <td style="text-align: center;">{{data.remark}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    
+    </mat-card>
+    
